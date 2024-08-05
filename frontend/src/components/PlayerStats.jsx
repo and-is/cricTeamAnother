@@ -64,7 +64,7 @@ const PlayerStatistics = () => {
   return (
     <div>
       <h1 className="text-2xl font-bold m-2 text-center">Player Statistics</h1>
-      <div className="mb-4">
+      <div className="mb-4 text-center">
         <input
           type="text"
           placeholder="Player ID"
@@ -136,7 +136,7 @@ const PlayerStatistics = () => {
         {playerStatistics.map((stat) => (
           <li
             key={stat.id}
-            className="mb-2 border-2 border-blue-300 rounded-lg p-5 mt-5"
+            className="mb-2 border-2 border-blue-300 rounded-lg p-5 mt-5 text-center bg-slate-100 ml-96 mr-96"
           >
             ID: {stat.id} Player: {stat.pid} Match: {stat.mid} <br /> Player
             Name: {stat.name}, Team Name: {stat.teamName} <br /> Runs:{" "}

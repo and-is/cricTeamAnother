@@ -24,3 +24,5 @@ export const deleteTeam = (id) => api.delete(`/api/team/${id}`);
 export const deletePlayer = (id) => api.delete(`/api/player/${id}`);
 export const deleteMatch = (id) => api.delete(`/api/match/${id}`);
 export const deleteStat = (id) => api.delete(`/api/stats/${id}`);
+
+export const advancedStat = (id) => api.get(`/api/stats/advanced/${id}`);

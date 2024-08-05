@@ -88,3 +88,24 @@ export const viewPlayerStatistics = async function (req, res) {
     });
   }
 };
+
+export const viewAdvancedStats = async function (req, res) {
+  try {
+    const { id } = req.params;
+    const playerDetails = await PlayerStatistics.find(id);
+    console.log(playerDetails);
+    if (!playerDetails) {
+      res.status(500).json({
+        message: "Details unable to fetch",
+      });
+    }
+    res.status(200).json({
+      data: playerDetails,
+      message: "Details Fetch successful",
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error while getting stats",
+    });
+  }
+};

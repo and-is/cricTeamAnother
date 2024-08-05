@@ -55,7 +55,7 @@ const Matches = () => {
   return (
     <div>
       <h1 className="text-2xl font-bold m-2 text-center">Matches</h1>
-      <div className="mb-4">
+      <div className="mb-4 text-center">
         <input
           type="date"
           placeholder="Date"
@@ -108,7 +108,7 @@ const Matches = () => {
         {matches.map((match) => (
           <li
             key={match.id}
-            className="mb-2 border-2 border-blue-300 rounded-lg p-5 mt-5"
+            className="mb-2 border-2 border-blue-300 rounded-lg p-5 mt-5 text-center bg-slate-100 mr-96 ml-96"
           >
             ID: {match.id} <br />
             {match.date.split("T")[0]} at {match.venue}

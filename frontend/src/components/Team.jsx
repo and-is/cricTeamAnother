@@ -58,7 +58,7 @@ const Team = () => {
   return (
     <div>
       <h1 className="text-2xl font-bold m-2 text-center">Teams</h1>
-      <div className="mb-4">
+      <div className="mb-4 text-center">
         <input
           type="text"
           placeholder="Team Name"
@@ -84,7 +84,7 @@ const Team = () => {
         {teams.map((team) => (
           <li
             key={team.id}
-            className="mb-2 border-2 border-blue-300 rounded-lg p-5 mt-5"
+            className="mb-2 border-2 border-blue-300 rounded-lg p-5 mt-5 text-center bg-slate-100 mr-96 ml-96"
           >
             ID: {team.id} <br />
             {team.name} ({team.coach})

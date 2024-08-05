@@ -1,9 +1,22 @@
 import { useState, useEffect } from "react";
-import { fetchPlayers, createPlayer, deletePlayer } from "../api/api";
+import {
+  fetchPlayers,
+  createPlayer,
+  deletePlayer,
+  advancedStat,
+} from "../api/api";
 import UpdatePlayerPopup from "./UpdatePlayerPopup.jsx";
+import AdvancedDataShow from "./AdvancedDataShow.jsx";
 
 const Player = () => {
   const [players, setPlayers] = useState([]);
+  const [advancedData, setAdvancedData] = useState({
+    totalRuns: "",
+    totalCatches: "",
+    totalWickets: "",
+    matchCount: "",
+  });
+  const [advanced, setAdvanced] = useState(false);
   const [newPlayer, setNewPlayer] = useState({
     name: "",
     age: "",
@@ -45,10 +58,18 @@ const Player = () => {
     setIsUpdating(true);
   };
 
+  const handleAdvancedStat = async (playerid) => {
+    setAdvanced(!advanced);
+    const response = await advancedStat(playerid);
+
+    setAdvancedData(response.data.data);
+    //console.log(dflksd)
+  };
+
   return (
     <div>
       <h1 className="text-2xl font-bold m-2 text-center">Players</h1>
-      <div className="mb-4">
+      <div className="mb-4 text-center">
         <input
           type="text"
           placeholder="Player Name"
@@ -86,11 +107,18 @@ const Player = () => {
           Add Player
         </button>
       </div>
+      {advanced && (
+        <AdvancedDataShow
+          totalRuns={advancedData?.totalRuns}
+          totalWickets={advancedData.totalWickets}
+          totalCatches={advancedData.totalCatches}
+        />
+      )}
       <ul>
         {players.map((player) => (
           <li
             key={player.id}
-            className="mb-2 border-2 border-blue-300 rounded-lg p-5 mt-5"
+            className="mb-2 border-2 border-blue-300 rounded-lg p-5 mt-5 text-center bg-slate-100 ml-96 mr-96"
           >
             ID: {player.id} <br />
             {player.name} ({player.role})
@@ -107,6 +135,12 @@ const Player = () => {
               onClick={() => handleDeletePlayer(player.id)}
             >
               Delete
+            </button>
+            <button
+              className="bg-gray-800 text-white p-2 ml-2 rounded-lg"
+              onClick={() => handleAdvancedStat(player.id)}
+            >
+              Advanced
             </button>
           </li>
         ))}
